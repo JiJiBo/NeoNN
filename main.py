@@ -8,11 +8,12 @@ from Config import device
 from load_data import load_MNIST_data, load_cf_data
 from model.model import DiyModel
 from model.model2 import DiyModel2
+from model.model3 import DiyModel3
 from model.nnn import NNNModel
 
 
 def train():
-    model = DiyModel2()
+    model = DiyModel3()
     model.to(device=device)
     print(device)
     trainloader, testloader = load_MNIST_data()
@@ -51,7 +52,7 @@ def train():
 
 def predict(model=None):
     if model is None:
-        model = DiyModel2()
+        model = DiyModel3()
         model.load_state_dict(torch.load("models/last_model.pth"))
         model.to(device=device)
     model.eval()

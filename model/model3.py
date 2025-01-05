@@ -16,9 +16,9 @@ class ConvBlock(nn.Module):
         return x
 
 
-class NNNConvBlock(nn.Module):
+class ELanBlock(nn.Module):
     def __init__(self, in_channel, out_channel):
-        super(NNNConvBlock, self).__init__()
+        super(ELanBlock, self).__init__()
         _channel = out_channel // 4
         self.c1 = ConvBlock(in_channel, _channel, kernel_size=3, stride=1, padding=1)
         self.c2 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
@@ -38,11 +38,11 @@ class DiyModel3(nn.Module):
         super(DiyModel3, self).__init__()
         self.number_class = number_class
         self.c1 = ConvBlock(in_channel=1, out_channel=64)
-        self.c2 = NNNConvBlock(in_channel=64, out_channel=128)
+        self.c2 = ELanBlock(in_channel=64, out_channel=128)
         self.c3 = ConvBlock(in_channel=128, out_channel=256)
-        self.c4 = NNNConvBlock(in_channel=256, out_channel=256)
+        self.c4 = ELanBlock(in_channel=256, out_channel=256)
         self.c5 = ConvBlock(in_channel=256, out_channel=128)
-        self.c6 = NNNConvBlock(in_channel=128, out_channel=64)
+        self.c6 = ELanBlock(in_channel=128, out_channel=64)
         self.c7 = ConvBlock(in_channel=64, out_channel=64)
         self.dropout = nn.Dropout(0.5)
         self.fc0 = nn.AdaptiveAvgPool2d(1)
