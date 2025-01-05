@@ -20,7 +20,7 @@ class NNNModel(nn.Module):
     def __init__(self, number_class=10):
         super(NNNModel, self).__init__()
         self.number_class = number_class
-        self.c1 = ConvBlock(in_channel=3, out_channel=64, kernel_size=3, stride=1, padding=1)
+        self.c1 = ConvBlock(in_channel=1, out_channel=64, kernel_size=3, stride=1, padding=1)
         self.c2 = ConvBlock(in_channel=64, out_channel=64, kernel_size=3, stride=1, padding=1)
         self.c3 = ConvBlock(in_channel=64, out_channel=128, kernel_size=3, stride=1, padding=1)
         self.c4 = ConvBlock(in_channel=192, out_channel=256, kernel_size=3, stride=1, padding=1)
