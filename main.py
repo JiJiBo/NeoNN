@@ -23,7 +23,7 @@ def train():
         milestones=[10, 20, 30 ],
         gamma=0.1
     )
-    epochs = 100
+    epochs = 26
     if not os.path.exists("models"):
         os.mkdir("models")
 
