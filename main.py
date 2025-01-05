@@ -11,7 +11,7 @@ from model.nnn import NNNModel
 
 
 def train():
-    model = NNNModel()
+    model = DiyModel()
     model.to(device=device)
     print(device)
     trainloader, testloader = load_MNIST_data()
@@ -50,7 +50,7 @@ def train():
 
 def predict(model=None):
     if model is None:
-        model = NNNModel()
+        model = DiyModel()
         model.load_state_dict(torch.load("models/last_model.pth"))
         model.to(device=device)
     model.eval()
