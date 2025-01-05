@@ -3,10 +3,11 @@ import torchvision.models as models
 
 from load_data import load_MNIST_data, load_cf_data
 
+
 def main():
     train_loader, test_loader = load_cf_data()
     # 加载ResNet模型
-    resnet = models.resnet18(pretrained=False, num_classes=10)
+    resnet = models.resnet18()
     resnet = resnet.cuda()
 
     # 定义训练超参数
@@ -36,5 +37,7 @@ def main():
             correct += (predicted == labels).sum().item()
 
     print(f"ResNet Test Accuracy: {100 * correct / total}%")
+
+
 if __name__ == '__main__':
     main()
