@@ -23,7 +23,7 @@ class ELanBlock(nn.Module):
         self.c1 = ConvBlock(in_channel, _channel, kernel_size=3, stride=1, padding=1)
         self.c2 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
         self.c3 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
-        self.c5 = ConvBlock(_channel * 4, out_channel, kernel_size=1, stride=1, padding=0)
+        self.c5 = ConvBlock(_channel * 3, out_channel, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x):
         c1 = self.c1(x)
