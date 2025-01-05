@@ -22,7 +22,7 @@ def train():
         shutil.rmtree("models")
     os.mkdir("models")
     model.train()
-    best_loss = int(1e9)
+    # best_loss = int(1e9)
     for epoch in range(epochs):
         datas = tqdm(trainloader)
         for data in datas:
@@ -32,10 +32,10 @@ def train():
             l = loss(outputs, labels)
             l.backward()
             optimizer.step()
-            if l.item() < best_loss:
-                best_loss = l.item()
-                torch.save(model.state_dict(), "models/best_model.pth")
-                print(f"New best loss: {best_loss}")
+            # if l.item() < best_loss:
+            #     best_loss = l.item()
+            #     torch.save(model.state_dict(), "models/best_model.pth")
+            #     print(f"New best loss: {best_loss}")
             datas.set_description(f"Epoch: {epoch + 1}/{epochs} Loss: {l.item()}")
 
     torch.save(model.state_dict(), "models/last_model.pth")
@@ -43,7 +43,7 @@ def train():
 
 def predict():
     model = DiyModel()
-    model.load_state_dict(torch.load("models/best_model.pth"))
+    model.load_state_dict(torch.load("models/last_model.pth"))
     model.to(device=device)
     model.eval()
     trainloader, testloader = load_MNIST_data()
