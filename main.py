@@ -14,7 +14,7 @@ def train():
     model = DiyModel()
     model.to(device=device)
     print(device)
-    trainloader, testloader = load_cf_data()
+    trainloader, testloader = load_MNIST_data()
 
     loss = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -47,7 +47,7 @@ def predict():
     model.load_state_dict(torch.load("models/last_model.pth"))
     model.to(device=device)
     model.eval()
-    trainloader, testloader = load_cf_data()
+    trainloader, testloader = load_MNIST_data()
     datas = tqdm(testloader)
     # 计算准确率
 
@@ -67,5 +67,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    # train()
+    train()
     predict()
