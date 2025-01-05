@@ -19,7 +19,7 @@ class ConvBlock(nn.Module):
 class ELanBlock(nn.Module):
     def __init__(self, in_channel, out_channel):
         super(ELanBlock, self).__init__()
-        _channel = out_channel // 4
+        _channel = in_channel
         self.c1 = ConvBlock(in_channel, _channel, kernel_size=3, stride=1, padding=1)
         self.c2 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
         self.c3 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
