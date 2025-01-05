@@ -8,11 +8,13 @@ class ConvBlock(nn.Module):
         self.conv = nn.Conv2d(in_channel, out_channel, kernel_size=kernel_size, stride=stride, padding=padding)
         self.bn = nn.BatchNorm2d(out_channel)
         self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(0.2)
 
     def forward(self, x):
         x = self.conv(x)
         x = self.bn(x)
         x = self.relu(x)
+        x = self.dropout(x)
         return x
 
 
