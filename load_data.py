@@ -9,8 +9,10 @@ from torchvision import transforms
 def load_MNIST_data(root='./datas/mnist', batch_size=1024, download=True, resize=(28, 28)):
     # 定义数据预处理
     transform = transforms.Compose([
-        transforms.ToTensor(),
         transforms.Resize(resize),
+        transforms.RandomRotation(10),
+        transforms.RandomAffine(0, translate=(0.1, 0.1)),
+        transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
     ])
 
