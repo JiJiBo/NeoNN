@@ -17,7 +17,12 @@ def train():
     trainloader, testloader = load_MNIST_data()
 
     loss = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.00001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    scheduler = torch.optim.lr_scheduler.MultiStepLR(
+        optimizer,
+        milestones=[10, 20, 30, 40],
+        gamma=0.1
+    )
     epochs = 100
     if not os.path.exists("models"):
         os.mkdir("models")
@@ -38,6 +43,7 @@ def train():
             #     torch.save(model.state_dict(), "models/best_model.pth")
             #     print(f"New best loss: {best_loss}")
             datas.set_description(f"Epoch: {epoch + 1}/{epochs} Loss: {l.item()}")
+        scheduler.step()
         predict(model)
     torch.save(model.state_dict(), "models/last_model.pth")
 
