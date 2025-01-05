@@ -1,3 +1,6 @@
+import os
+import shutil
+
 import torch
 from tqdm import tqdm
 
@@ -14,7 +17,9 @@ def train():
     loss = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     epochs = 3
-
+    if os.path.exists("models"):
+        shutil.rmtree("models")
+    os.mkdir("models")
     model.train()
     best_loss = int(1e9)
     for epoch in range(epochs):
@@ -28,16 +33,16 @@ def train():
             optimizer.step()
             if l.item() < best_loss:
                 best_loss = l.item()
-                torch.save(model.state_dict(), "models/diy/best_model.pth")
+                torch.save(model.state_dict(), "models/best_model.pth")
                 print(f"New best loss: {best_loss}")
             datas.set_description(f"Epoch: {epoch + 1}/{epochs} Loss: {l.item()}")
 
-    torch.save(model.state_dict(), "models/diy/last_model.pth")
+    torch.save(model.state_dict(), "models/last_model.pth")
 
 
 def predict():
     model = DiyModel()
-    model.load_state_dict(torch.load("models/diy/best_model.pth"))
+    model.load_state_dict(torch.load("models/best_model.pth"))
     model.to(device=device)
     model.eval()
     trainloader, testloader = load_MNIST_data()
