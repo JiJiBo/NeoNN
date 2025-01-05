@@ -39,13 +39,13 @@ class DiyModel2(nn.Module):
     def __init__(self, number_class=10):
         super(DiyModel2, self).__init__()
         self.number_class = number_class
-        self.c1 = NNNConvBlock(in_channel=1, out_channel=64)
+        self.c1 = ConvBlock(in_channel=1, out_channel=64)
         self.c2 = NNNConvBlock(in_channel=64, out_channel=128)
-        self.c3 = NNNConvBlock(in_channel=128, out_channel=256)
+        self.c3 = ConvBlock(in_channel=128, out_channel=256)
         self.c4 = NNNConvBlock(in_channel=256, out_channel=256)
-        self.c5 = NNNConvBlock(in_channel=256, out_channel=128)
+        self.c5 = ConvBlock(in_channel=256, out_channel=128)
         self.c6 = NNNConvBlock(in_channel=128, out_channel=64)
-        self.c7 = NNNConvBlock(in_channel=64, out_channel=64)
+        self.c7 = ConvBlock(in_channel=64, out_channel=64)
         self.dropout = nn.Dropout(0.5)
         self.fc0 = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Linear(64, number_class)
