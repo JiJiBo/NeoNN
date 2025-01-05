@@ -47,7 +47,7 @@ def predict():
     model.load_state_dict(torch.load("models/last_model.pth"))
     model.to(device=device)
     model.eval()
-    trainloader, testloader = load_MNIST_data()
+    trainloader, testloader = load_cf_data()
     datas = tqdm(testloader)
     # 计算准确率
 
