@@ -17,7 +17,7 @@ def train():
     trainloader, testloader = load_MNIST_data()
 
     loss = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.00001)
     epochs = 100
     if not os.path.exists("models"):
         os.mkdir("models")
