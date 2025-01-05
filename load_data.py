@@ -16,11 +16,11 @@ def load_MNIST_data(root='./datas/mnist', batch_size=8, download=True, resize=(2
 
     # 加载训练集
     trainset = torchvision.datasets.MNIST(root=root, train=True, download=download, transform=transform)
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)
+    trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=0)
 
     # 加载测试集
     testset = torchvision.datasets.MNIST(root=root, train=False, download=download, transform=transform)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=2)
+    testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=0)
 
     return trainloader, testloader
 
