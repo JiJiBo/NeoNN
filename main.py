@@ -6,11 +6,11 @@ from tqdm import tqdm
 
 from Config import device
 from load_data import load_MNIST_data, load_cf_data
-from model import DiyModel
+from model.nnn import NNNModel
 
 
 def train():
-    model = DiyModel()
+    model = NNNModel()
     model.to(device=device)
     print(device)
     trainloader, testloader = load_cf_data()
