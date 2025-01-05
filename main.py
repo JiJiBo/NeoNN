@@ -18,7 +18,7 @@ def train():
 
     loss = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    epochs = 3
+    epochs = 100
     if not os.path.exists("models"):
         os.mkdir("models")
 
