@@ -38,14 +38,15 @@ def train():
             #     torch.save(model.state_dict(), "models/best_model.pth")
             #     print(f"New best loss: {best_loss}")
             datas.set_description(f"Epoch: {epoch + 1}/{epochs} Loss: {l.item()}")
-
+        predict(model)
     torch.save(model.state_dict(), "models/last_model.pth")
 
 
-def predict():
-    model = NNNModel()
-    model.load_state_dict(torch.load("models/last_model.pth"))
-    model.to(device=device)
+def predict(model=None):
+    if model is None:
+        model = NNNModel()
+        model.load_state_dict(torch.load("models/last_model.pth"))
+        model.to(device=device)
     model.eval()
     trainloader, testloader = load_MNIST_data()
     datas = tqdm(testloader)
