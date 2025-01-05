@@ -12,7 +12,7 @@ from model import DiyModel
 def train():
     model = DiyModel()
     model.to(device=device)
-    trainloader, testloader = load_cf_data()
+    trainloader, testloader = load_MNIST_data()
 
     loss = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
