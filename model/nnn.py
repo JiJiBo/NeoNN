@@ -28,10 +28,10 @@ class NNNModel(nn.Module):
         self.c4 = ConvBlock(in_channel=192, out_channel=256, kernel_size=3, stride=1, padding=1)
         self.c5 = ConvBlock(in_channel=192, out_channel=256, kernel_size=3, stride=1, padding=1)
         self.c6 = ConvBlock(in_channel=640, out_channel=256, kernel_size=3, stride=1, padding=1)
-        self.c7 = ConvBlock(in_channel=256, out_channel=64, kernel_size=1, stride=1, padding=0)
+        self.c7 = ConvBlock(in_channel=256, out_channel=128, kernel_size=1, stride=1, padding=0)
         self.dropout = nn.Dropout(0.5)
         self.fc0 = nn.AdaptiveAvgPool2d(1)
-        self.fc = nn.Linear(64, number_class)
+        self.fc = nn.Linear(128, number_class)
 
     def forward(self, x):
         c1 = self.c1(x)
