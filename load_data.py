@@ -6,7 +6,7 @@ from torchvision import transforms
 
 
 # 用torch加载MNIST数据集（直接交给GPT）
-def load_MNIST_data(root='./datas/mnist', batch_size=32, download=True, resize=(224, 224)):
+def load_MNIST_data(root='./datas/mnist', batch_size=8, download=True, resize=(224, 224)):
     # 定义数据预处理
     transform = transforms.Compose([
         transforms.ToTensor(),
