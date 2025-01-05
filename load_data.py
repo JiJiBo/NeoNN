@@ -26,7 +26,7 @@ def load_MNIST_data(root='./datas/mnist', batch_size=64, download=True, resize=(
 
 
 # 用torch加载MNIST数据集（直接交给GPT）
-def load_cf_data(batch_size=8, resize=(224, 224)):
+def load_cf_data(batch_size=4, resize=(224, 224)):
     # 定义数据预处理
     transform = transforms.Compose([
         transforms.ToTensor(),
