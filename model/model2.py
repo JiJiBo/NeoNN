@@ -20,11 +20,11 @@ class NNNConvBlock(nn.Module):
     def __init__(self, in_channel, out_channel):
         super(NNNConvBlock, self).__init__()
         _channel = out_channel // 4
-        self.c1 = nn.Conv2d(in_channel, _channel, kernel_size=3, stride=1, padding=1)
-        self.c2 = nn.Conv2d(_channel, _channel, kernel_size=3, stride=1, padding=1)
-        self.c3 = nn.Conv2d(_channel, _channel, kernel_size=3, stride=1, padding=1)
-        self.c4 = nn.Conv2d(_channel, _channel, kernel_size=3, stride=1, padding=1)
-        self.c5 = nn.Conv2d(_channel * 4, out_channel, kernel_size=1, stride=1, padding=0)
+        self.c1 = ConvBlock(in_channel, _channel, kernel_size=3, stride=1, padding=1)
+        self.c2 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
+        self.c3 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
+        self.c4 = ConvBlock(_channel, _channel, kernel_size=3, stride=1, padding=1)
+        self.c5 = ConvBlock(_channel * 4, out_channel, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x):
         c1 = self.c1(x)
