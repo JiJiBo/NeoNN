@@ -17,10 +17,10 @@ def train():
     trainloader, testloader = load_MNIST_data()
 
     loss = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
     scheduler = torch.optim.lr_scheduler.MultiStepLR(
         optimizer,
-        milestones=[10, 20, 30, 40],
+        milestones=[10, 20, 30 ],
         gamma=0.1
     )
     epochs = 100
